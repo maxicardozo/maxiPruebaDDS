@@ -1,0 +1,6 @@
+# Ignoramos todo lo que se puede generar con mvn install
+.git/
+.settings/
+target/
+.project
+.classpath

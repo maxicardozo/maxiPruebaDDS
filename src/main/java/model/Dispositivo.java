@@ -25,14 +25,11 @@ public class Dispositivo {
 		this.kWHora = kWHora;
 	}
 
-	public boolean isEncendido() {
+	public boolean estaEncendido() {
 		return encendido;
 	}
 
 	public void setEncendido(boolean encendido) {
 		this.encendido = encendido;
 	}
-
-		
-
 }

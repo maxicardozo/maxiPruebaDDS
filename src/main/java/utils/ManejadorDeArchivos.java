@@ -5,7 +5,12 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 public class ManejadorDeArchivos {
-	public String leerArchivoJson(String filePath) {
+	/**
+	 * Lee todo el contenido de un archivo de texto.
+	 * @param filePath El path donde se encuentra el archivo.
+	 * @return El contenido del archivo.
+	 */
+	public String leerArchivo(String filePath) {
 		try {
 			StringBuilder builder = new StringBuilder();
 			for(String lineaLeida : Files.readAllLines(Paths.get(filePath))) {

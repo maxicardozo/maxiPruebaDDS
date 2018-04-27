@@ -1,12 +1,12 @@
 package repositories;
 
-import java.util.Collection;
+import java.util.List;
 
 import model.Dispositivo;
 
 public class RepositorioDeDispositivos {
 	private static RepositorioDeDispositivos instance = null;
-	private Collection<Dispositivo> dispositivos;
+	private List<Dispositivo> dispositivos;
 	
 	private RepositorioDeDispositivos() {
 		
@@ -19,11 +19,11 @@ public class RepositorioDeDispositivos {
 		return instance;
 	}
 
-	public Collection<Dispositivo> getDispositivos() {
+	public List<Dispositivo> getDispositivos() {
 		return dispositivos;
 	}
 
-	public void setDispositivos(Collection<Dispositivo> dispositivos) {
+	public void setDispositivos(List<Dispositivo> dispositivos) {
 		this.dispositivos = dispositivos;
 	}
 

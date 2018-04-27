@@ -1,13 +1,12 @@
 package repositories;
 
-import java.util.Collection;
+import java.util.List;
 
 import model.Cliente;
-import model.Dispositivo;
 
 public class RepositorioDeUsuarios {
 	private static RepositorioDeUsuarios instance = null;
-	private Collection<Cliente> clientes;
+	private List<Cliente> clientes;
 	
 	private RepositorioDeUsuarios() {
 		
@@ -20,11 +19,11 @@ public class RepositorioDeUsuarios {
 		return instance;
 	}
 
-	public Collection<Cliente> getUsuarios() {
+	public List<Cliente> getUsuarios() {
 		return clientes;
 	}
 
-	public void setUsuarios(Collection<Cliente> usuarios) {
+	public void setUsuarios(List<Cliente> usuarios) {
 		this.clientes = usuarios;
 	}
 }

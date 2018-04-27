@@ -72,5 +72,4 @@ public class ImportadorDeDatosTest {
 		assertTrue(dispositivosObtenidos.get(0).estaEncendido());
 	}
 
-
 }

@@ -2,6 +2,7 @@ package tests;
 
 import static org.junit.Assert.*;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import model.CategoriaEnum;
@@ -16,12 +17,20 @@ import java.time.LocalDate;
 import java.util.List;
 
 public class ImportadorDeDatosTest {
+	
+	ManejadorDeArchivos manejador;
+	ImportadorDeDatos importador;
+	
+	@Before
+	public void setUp() {	
+		
+		manejador = mock(ManejadorDeArchivos.class);
+		importador = new ImportadorDeDatos(manejador);			
+	}	
 
 	@Test
 	public void ImportadorDeDatos_deserializaCliente() {
 		// Arrange
-		ManejadorDeArchivos manejador = mock(ManejadorDeArchivos.class);
-		ImportadorDeDatos importador = new ImportadorDeDatos(manejador);
 
 		String contenidoJSON = "{\"clientes\": ["
 			+ "{\"nombre\": \"Juan\","
@@ -52,9 +61,7 @@ public class ImportadorDeDatosTest {
 
 	@Test
 	public void ImportadorDeDatos_deserializaDispositivo() {
-		// Arrange
-		ManejadorDeArchivos manejador = mock(ManejadorDeArchivos.class);
-		ImportadorDeDatos importador = new ImportadorDeDatos(manejador);
+		// Arrange		
 		String contenidoJSON = "{\"dispositivos\": ["
 			+ "{\"nombreGenerico\": \"Pava electrica\","
 			+ "\"kWHora\": 5,"

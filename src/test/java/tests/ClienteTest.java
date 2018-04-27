@@ -2,22 +2,40 @@ package tests;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+
+import org.junit.Before;
 import org.junit.Test;
 
 import model.Cliente;
 import model.Dispositivo;
 
 public class ClienteTest {
+	
+	Cliente cliente;
+	
+	Dispositivo dispositivoEncendido;
+	Dispositivo dispositivoApagado;
+	Dispositivo dispositivoApagado1;
+	Dispositivo dispositivoApagado2;
+	
+	@Before
+	public void setUp() {	
+		
+		cliente = new Cliente();
+		
+		dispositivoEncendido = new Dispositivo();
+		dispositivoApagado = new Dispositivo();
+		dispositivoApagado1 = new Dispositivo();
+		dispositivoApagado2 = new Dispositivo();
+
+	}
 
 	@Test
 	public void tieneAlMenosUnDispositivo_DevuelveTrue() {
 		// Arrange
-		boolean esperado = true;
-		Cliente cliente = new Cliente();
-		Dispositivo dispositivoEncendido = new Dispositivo();
+		boolean esperado = true;		
 		dispositivoEncendido.setEncendido(true);
-		
-		Dispositivo dispositivoApagado = new Dispositivo();
 		dispositivoApagado.setEncendido(false);
 		
 		cliente.getDispositivos().add(dispositivoEncendido);
@@ -33,12 +51,8 @@ public class ClienteTest {
 	@Test
 	public void tieneAlMenosUnDispositivo_DevuelveFalse() {
 		// Arrange
-		boolean esperado = false;
-		Cliente cliente = new Cliente();
-		Dispositivo dispositivoApagado1 = new Dispositivo();
-		dispositivoApagado1.setEncendido(false);
-		
-		Dispositivo dispositivoApagado2 = new Dispositivo();
+		boolean esperado = false;				
+		dispositivoApagado1.setEncendido(false);			
 		dispositivoApagado2.setEncendido(false);
 		
 		cliente.getDispositivos().add(dispositivoApagado1);
@@ -54,13 +68,10 @@ public class ClienteTest {
 	@Test
 	public void cantidadDeDispositivos_DevuelveTamanioCorrecto() {
 		// Arrange
-		long esperado = 2;
-		Cliente cliente = new Cliente();
-		Dispositivo dispositivo1 = new Dispositivo();
-		Dispositivo dispositivo2 = new Dispositivo();
+		long esperado = 2;				
 		
-		cliente.getDispositivos().add(dispositivo1);
-		cliente.getDispositivos().add(dispositivo2);
+		cliente.getDispositivos().add(dispositivoEncendido);
+		cliente.getDispositivos().add(dispositivoApagado);
 		
 		// Act
 		long obtenido = cliente.cantidadDispositivos();
@@ -72,12 +83,8 @@ public class ClienteTest {
 	@Test
 	public void tieneUnDispositivoEncendido_DevuelveCantidadCorrecta() {
 		// Arrange
-		long esperado = 1;
-		Cliente cliente = new Cliente();
-		Dispositivo dispositivoEncendido = new Dispositivo();
-		dispositivoEncendido.setEncendido(true);
-		
-		Dispositivo dispositivoApagado = new Dispositivo();
+		long esperado = 1;		
+		dispositivoEncendido.setEncendido(true);			
 		dispositivoApagado.setEncendido(false);
 		
 		cliente.getDispositivos().add(dispositivoEncendido);
@@ -93,12 +100,8 @@ public class ClienteTest {
 	@Test
 	public void tieneDosDispositivosApagados_DevuelveCantidadCorrecta() {
 		// Arrange
-		long esperado = 2;
-		Cliente cliente = new Cliente();
-		Dispositivo dispositivoEncendido = new Dispositivo();
+		long esperado = 2;		
 		dispositivoEncendido.setEncendido(false);
-		
-		Dispositivo dispositivoApagado = new Dispositivo();
 		dispositivoApagado.setEncendido(false);
 		
 		cliente.getDispositivos().add(dispositivoEncendido);

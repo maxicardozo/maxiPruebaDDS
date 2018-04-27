@@ -1,23 +1,44 @@
 package tests;
 
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.mock;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 
 import model.Cliente;
-import repositories.RepositorioDeUsuarios;;
+import repositories.RepositorioDeUsuarios;
+import utils.ImportadorDeDatos;
+import utils.ManejadorDeArchivos;;
 
 public class RepositorioDeClientesTest {
 
+	List<Cliente> clientes;
+	
+	Cliente cliente1;
+	Cliente cliente2;
+	
+	@Before
+	public void setUp() {	
+		
+		clientes = new ArrayList<Cliente>();
+		
+		cliente1 = new Cliente();
+		cliente2 = new Cliente();
+	}
+	
+	@After
+    public void tearDown() {
+		RepositorioDeUsuarios.getInstance().getUsuarios().clear();
+	}	
+
 	@Test
 	public void persistirEnMemoria() {
-		// Arrange
-		List<Cliente> clientes = new ArrayList<Cliente>();
-		Cliente cliente1 = new Cliente();
-		Cliente cliente2 = new Cliente();
+		// Arrange				
 		clientes.add(cliente1);
 		clientes.add(cliente2);
 		

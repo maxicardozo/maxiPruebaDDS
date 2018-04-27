@@ -1,0 +1,8 @@
+{"dispositivos":
+	[
+		{"nombreGenerico": "Pava electrica",
+		 "kWHora": 5,
+		 "encendido": true
+		}
+	]
+}

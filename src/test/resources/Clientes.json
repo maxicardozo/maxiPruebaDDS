@@ -1,0 +1,13 @@
+{"clientes": 
+	[
+		{"nombre": "Juan",
+		 "apellido": "Quinteros",
+		 "tipoDocumento": "DNI",		 
+		 "numeroDocumento": "36159783",
+		 "telefono": "41111111",
+		 "domicilio": "Calle Falsa 123",
+			"fechaAlta": "1991-10-14",
+			"categoria": "R1"		
+		}
+	]
+}

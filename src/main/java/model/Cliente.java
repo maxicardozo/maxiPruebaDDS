@@ -12,7 +12,7 @@ public class Cliente {
 	private String telefono;
 	private String domicilio;
 	private LocalDate fechaAlta;
-	private CategoriaEnum categoria;
+	private Categoria categoria;
 	private List<Dispositivo> dispositivos = new ArrayList<Dispositivo>();
 
 
@@ -90,12 +90,12 @@ public class Cliente {
 	}
 
 
-	public CategoriaEnum getCategoria() {
+	public Categoria getCategoria() {
 		return categoria;
 	}
 
 
-	public void setCategoria(CategoriaEnum categoria) {
+	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
 	}
 	

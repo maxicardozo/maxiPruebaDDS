@@ -7,7 +7,7 @@ import java.util.List;
 
 import com.google.gson.*;
 
-import model.CategoriaEnum;
+import model.Categoria;
 import model.Cliente;
 import model.Dispositivo;
 
@@ -25,9 +25,7 @@ public class ImportadorDeDatos {
 	 * @return La fecha parseada.
 	 */
 	public LocalDate deserializarFechaAlta(String fechaJson) {
-		LocalDate nuevaFechaAlta = LocalDate.parse(fechaJson, DateTimeFormatter.ISO_LOCAL_DATE);
-
-		return nuevaFechaAlta;
+		return LocalDate.parse(fechaJson, DateTimeFormatter.ISO_LOCAL_DATE);
 	}
 
 	/**
@@ -46,7 +44,7 @@ public class ImportadorDeDatos {
 		// Seteamos la fecha.
 		nuevoCliente.setFechaAlta(this.deserializarFechaAlta(cliente.get("fechaAlta").getAsString()));
 		// Seteamos la nueva categoría.
-		nuevoCliente.setCategoria(CategoriaEnum.valueOf(cliente.get("categoria").getAsString()));
+		nuevoCliente.setCategoria(Categoria.valueOf(cliente.get("categoria").getAsString()));
 
 		return nuevoCliente;
 	}

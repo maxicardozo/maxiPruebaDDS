@@ -5,7 +5,7 @@ import java.util.List;
 import model.Dispositivo;
 
 public class RepositorioDeDispositivos {
-	private static RepositorioDeDispositivos instance = null;
+	private static RepositorioDeDispositivos instance = new RepositorioDeDispositivos();
 	private List<Dispositivo> dispositivos;
 	
 	private RepositorioDeDispositivos() {
@@ -13,9 +13,6 @@ public class RepositorioDeDispositivos {
 	}
 	
 	public static RepositorioDeDispositivos getInstance() {
-		if(instance == null) {
-			instance = new RepositorioDeDispositivos();
-		}
 		return instance;
 	}
 

@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import model.CategoriaEnum;
+import model.Categoria;
 import model.Cliente;
 
 import static org.mockito.Mockito.*;
@@ -21,11 +21,11 @@ public class CategorizadorClientesTest {
 		// Arrange
 		CategorizadorClientes categorizador = spy(CategorizadorClientes.class);
 		Cliente cliente = mock(Cliente.class);
-		CategoriaEnum categoriaEsperada = CategoriaEnum.R3;
+		Categoria categoriaEsperada = Categoria.R3;
 		
 		// Act
 		doReturn(375.00).when(categorizador).consumoCliente(any(Cliente.class));
-		CategoriaEnum categoriaObtenida = categorizador.categoriaCliente(cliente);
+		Categoria categoriaObtenida = categorizador.categoriaCliente(cliente);
 		
 		// Assert
 		assertEquals(categoriaEsperada, categoriaObtenida);
@@ -37,11 +37,11 @@ public class CategorizadorClientesTest {
 		// Arrange
 		CategorizadorClientes categorizador = spy(CategorizadorClientes.class);
 		Cliente cliente = mock(Cliente.class);
-		CategoriaEnum categoriaEsperada = CategoriaEnum.R1;
+		Categoria categoriaEsperada = Categoria.R1;
 		
 		// Act
 		doReturn(50.00).when(categorizador).consumoCliente(any(Cliente.class));
-		CategoriaEnum categoriaObtenida = categorizador.categoriaCliente(cliente);
+		Categoria categoriaObtenida = categorizador.categoriaCliente(cliente);
 		
 		// Assert
 		assertEquals(categoriaEsperada, categoriaObtenida);
@@ -53,11 +53,11 @@ public class CategorizadorClientesTest {
 		// Arrange
 		CategorizadorClientes categorizador = spy(CategorizadorClientes.class);
 		Cliente cliente = mock(Cliente.class);
-		CategoriaEnum categoriaEsperada = CategoriaEnum.R9;
+		Categoria categoriaEsperada = Categoria.R9;
 		
 		// Act
 		doReturn(2000.00).when(categorizador).consumoCliente(any(Cliente.class));
-		CategoriaEnum categoriaObtenida = categorizador.categoriaCliente(cliente);
+		Categoria categoriaObtenida = categorizador.categoriaCliente(cliente);
 		
 		// Assert
 		assertEquals(categoriaEsperada, categoriaObtenida);

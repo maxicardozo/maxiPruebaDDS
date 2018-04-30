@@ -18,9 +18,8 @@ public class ManejadorDeArchivos {
 			}
 			return builder.toString();
 		} catch (IOException e) {
-			//throw new ParserException("Error leyendo el archivo: " + filePath);
+			throw new RuntimeException("Error leyendo el archivo: " + filePath, e);
 		}
-		return filePath;
 	}
 
 }

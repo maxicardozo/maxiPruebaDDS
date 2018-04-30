@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import model.CategoriaEnum;
+import model.Categoria;
 import model.Cliente;
 import model.Dispositivo;
 import utils.ImportadorDeDatos;
@@ -60,7 +60,7 @@ public class ImportadorDeDatosTest {
 		assertEquals("41111111", clientesObtenidos.get(0).getTelefono());
 		assertEquals("Calle Falsa 123", clientesObtenidos.get(0).getDomicilio());
 		assertTrue(clientesObtenidos.get(0).getFechaAlta().equals(LocalDate.of(1991, 10, 14)));
-		assertEquals(CategoriaEnum.R1, clientesObtenidos.get(0).getCategoria());
+		assertEquals(Categoria.R1, clientesObtenidos.get(0).getCategoria());
 	}
 
 	@Test
@@ -97,7 +97,7 @@ public class ImportadorDeDatosTest {
 		assertEquals("41111111", clientesObtenidos.get(0).getTelefono());
 		assertEquals("Calle Falsa 123", clientesObtenidos.get(0).getDomicilio());
 		assertTrue(clientesObtenidos.get(0).getFechaAlta().equals(LocalDate.of(1991, 10, 14)));
-		assertEquals(CategoriaEnum.R1, clientesObtenidos.get(0).getCategoria());
+		assertEquals(Categoria.R1, clientesObtenidos.get(0).getCategoria());
 	}	
 	
 	@Test

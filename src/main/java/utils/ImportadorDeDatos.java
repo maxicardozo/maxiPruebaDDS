@@ -34,7 +34,8 @@ public class ImportadorDeDatos {
 	 * @return El cliente parseado.
 	 */
 	public Cliente deserializarCliente(JsonObject cliente) {
-		Cliente nuevoCliente = new Cliente(cliente.get("nombre").getAsString(),
+		Cliente nuevoCliente = new Cliente(
+				   cliente.get("nombre").getAsString(),
 				   cliente.get("apellido").getAsString(),
 				   cliente.get("tipoDocumento").getAsString(),
 				   cliente.get("numeroDocumento").getAsString(),
@@ -64,10 +65,11 @@ public class ImportadorDeDatos {
 	 * @return El dispositivo ya parseado.
 	 */
 	public Dispositivo deserializarDispositivo(JsonObject dispositivo) {
-		Dispositivo nuevoDispositivo = new Dispositivo();
-		nuevoDispositivo.setNombreGenerico(dispositivo.get("nombreGenerico").getAsString());
-		nuevoDispositivo.setkWHora(dispositivo.get("kWHora").getAsDouble());
-		nuevoDispositivo.setEncendido(dispositivo.get("encendido").getAsBoolean());
+		Dispositivo nuevoDispositivo = new Dispositivo(
+				dispositivo.get("nombreGenerico").getAsString(),
+				dispositivo.get("kWHora").getAsDouble(),
+				dispositivo.get("encendido").getAsBoolean()
+				);
 
 		return nuevoDispositivo;
 	}

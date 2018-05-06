@@ -15,97 +15,60 @@ public class Cliente {
 	private Categoria categoria;
 	private List<Dispositivo> dispositivos = new ArrayList<Dispositivo>();
 
-
-	public Cliente() {
-		super();
-	}
-
+	//public Cliente(String nombre, String apellido, String tipoDocumento, String numeroDocumento, String telefono, String domicilio, LocalDate fechaAlta, Categoria categoria, List<Dispositivo> dispositivos) {
+	public Cliente(String nombre, String apellido, String tipoDocumento, String numeroDocumento, String telefono, String domicilio, LocalDate fechaAlta, Categoria categoria) {
+	    this.nombre = nombre;
+        this.apellido = apellido;
+        this.tipoDocumento = tipoDocumento;
+        this.numeroDocumento = numeroDocumento;
+        this.telefono = telefono;
+        this.domicilio = domicilio;
+        this.fechaAlta = fechaAlta;
+        this.categoria = categoria;
+    	//this.dispositivos = dispositivos;
+    }
 
 	public String getNombre() {
 		return nombre;
 	}
 
-
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-
-
 	public String getApellido() {
 		return apellido;
 	}
 
-
-	public void setApellido(String apellido) {
-		this.apellido = apellido;
-	}
-
-
 	public String getTipoDocumento() {
 		return tipoDocumento;
 	}
-
-
-	public void setTipoDocumento(String tipoDocumento) {
-		this.tipoDocumento = tipoDocumento;
-	}
-
-
+	
 	public String getNumeroDocumento() {
 		return numeroDocumento;
 	}
-
-
-	public void setNumeroDocumento(String numeroDocumento) {
-		this.numeroDocumento = numeroDocumento;
-	}
-
 
 	public String getTelefono() {
 		return telefono;
 	}
 
-
-	public void setTelefono(String telefono) {
-		this.telefono = telefono;
-	}
-
-
 	public String getDomicilio() {
 		return domicilio;
 	}
 
-
-	public void setDomicilio(String domicilio) {
-		this.domicilio = domicilio;
-	}
-
-	public LocalDate getFechaAlta() {
-		return fechaAlta;
-	}
-
-
-	public void setFechaAlta(LocalDate fechaAlta) {
-		this.fechaAlta = fechaAlta;
-	}
-
-
 	public Categoria getCategoria() {
 		return categoria;
 	}
-
-
-	public void setCategoria(Categoria categoria) {
-		this.categoria = categoria;
+	
+	public LocalDate getFechaAlta() {
+		return fechaAlta;
 	}
 	
 	public List<Dispositivo> getDispositivos() {
 		return dispositivos;
 	}
 
-
-	public void setDispositivos(List<Dispositivo> dispositivos) {
-		this.dispositivos = dispositivos;
+	/**
+	 * Metodo que solo debe ser utilizado por la clase Categoria
+	 */
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
 	}
 	
 	/**
@@ -139,4 +102,18 @@ public class Cliente {
 	public long cantidadDispositivosApagados() {
 		return this.dispositivos.stream().filter(dispositivo -> !dispositivo.estaEncendido()).count();
 	}
+	
+	/**
+	 * Devuelve el consumo de este cliente.
+	 * @return El consumo de este cliente.
+	 */
+	public double consumo()
+	{
+		return this
+			.getDispositivos()
+			.stream()
+			.mapToDouble(dispositivo -> dispositivo.getkWHora())
+			.sum();
+	}
+	
 }

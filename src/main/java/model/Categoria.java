@@ -1,5 +1,9 @@
 package model;
 
+import java.util.Arrays;
+import java.util.Optional;
+import model.Cliente;
+
 public enum Categoria {
 	R1(0, 150, 18.76, 0.644),
 	R2(150, 325, 35.32, 0.644),
@@ -42,4 +46,26 @@ public enum Categoria {
     {
     	return this.consumoMaximo;
     }
+    
+	/**
+	 * Devuelve la categoria a la que debería pertenecer un cliente teniendo en cuenta su consumo.
+	 * @param cliente
+	 * @return La categoria a la que deberia pertenecer.
+	 */
+	public Categoria categorizar(Cliente cliente)
+	{
+		return Arrays.stream(Categoria.values())
+					 .filter(categoria -> categoria.getConsumoMinimo() < cliente.consumo() && cliente.consumo() < categoria.getConsumoMaximo()) 
+					 .findFirst()
+					 .get();
+	}
+
+    /**
+	 * Settea la categoria a la que pasa a pertenecer un cliente teniendo en cuenta su consumo.
+	 * @param cliente
+	 */
+	public void recategorizar(Cliente cliente)
+	{
+		cliente.setCategoria(this.categorizar(cliente));
+	}
 }

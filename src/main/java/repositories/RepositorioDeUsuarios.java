@@ -5,7 +5,7 @@ import java.util.List;
 import model.Cliente;
 
 public class RepositorioDeUsuarios {
-	private static RepositorioDeUsuarios instance = null;
+	private static RepositorioDeUsuarios instance = new RepositorioDeUsuarios();
 	private List<Cliente> clientes;
 	
 	private RepositorioDeUsuarios() {
@@ -13,9 +13,6 @@ public class RepositorioDeUsuarios {
 	}
 	
 	public static RepositorioDeUsuarios getInstance() {
-		if(instance == null) {
-			instance = new RepositorioDeUsuarios();
-		}
 		return instance;
 	}
 

@@ -15,19 +15,18 @@ public class ClienteTest {
 	Cliente cliente;
 	
 	Dispositivo dispositivoEncendido;
-	Dispositivo dispositivoApagado;
 	Dispositivo dispositivoApagado1;
 	Dispositivo dispositivoApagado2;
 	
 	@Before
 	public void setUp() {	
 		
-		cliente = new Cliente();
+		cliente = new Cliente(null, null, null, null, null, null, null, null);
+		//cliente = new Cliente(null, null, null, null, null, null, null, null, null);
 		
-		dispositivoEncendido = new Dispositivo();
-		dispositivoApagado = new Dispositivo();
-		dispositivoApagado1 = new Dispositivo();
-		dispositivoApagado2 = new Dispositivo();
+		dispositivoEncendido = new Dispositivo(null,100,true);
+		dispositivoApagado1 = new Dispositivo(null,50,false);
+		dispositivoApagado2 = new Dispositivo(null,10,false);
 
 	}
 
@@ -35,11 +34,9 @@ public class ClienteTest {
 	public void tieneAlMenosUnDispositivo_DevuelveTrue() {
 		// Arrange
 		boolean esperado = true;		
-		dispositivoEncendido.setEncendido(true);
-		dispositivoApagado.setEncendido(false);
 		
 		cliente.getDispositivos().add(dispositivoEncendido);
-		cliente.getDispositivos().add(dispositivoApagado);
+		cliente.getDispositivos().add(dispositivoApagado1);
 		
 		// Act
 		boolean obtenido = cliente.tieneDispositivoEncendido();
@@ -52,9 +49,7 @@ public class ClienteTest {
 	public void tieneAlMenosUnDispositivo_DevuelveFalse() {
 		// Arrange
 		boolean esperado = false;				
-		dispositivoApagado1.setEncendido(false);			
-		dispositivoApagado2.setEncendido(false);
-		
+	
 		cliente.getDispositivos().add(dispositivoApagado1);
 		cliente.getDispositivos().add(dispositivoApagado2);
 		
@@ -71,7 +66,7 @@ public class ClienteTest {
 		long esperado = 2;				
 		
 		cliente.getDispositivos().add(dispositivoEncendido);
-		cliente.getDispositivos().add(dispositivoApagado);
+		cliente.getDispositivos().add(dispositivoApagado1);
 		
 		// Act
 		long obtenido = cliente.cantidadDispositivos();
@@ -84,11 +79,9 @@ public class ClienteTest {
 	public void tieneUnDispositivoEncendido_DevuelveCantidadCorrecta() {
 		// Arrange
 		long esperado = 1;		
-		dispositivoEncendido.setEncendido(true);			
-		dispositivoApagado.setEncendido(false);
 		
 		cliente.getDispositivos().add(dispositivoEncendido);
-		cliente.getDispositivos().add(dispositivoApagado);
+		cliente.getDispositivos().add(dispositivoApagado1);
 		
 		// Act
 		long obtenido = cliente.cantidadDispositivosEncendidos();
@@ -101,11 +94,9 @@ public class ClienteTest {
 	public void tieneDosDispositivosApagados_DevuelveCantidadCorrecta() {
 		// Arrange
 		long esperado = 2;		
-		dispositivoEncendido.setEncendido(false);
-		dispositivoApagado.setEncendido(false);
 		
-		cliente.getDispositivos().add(dispositivoEncendido);
-		cliente.getDispositivos().add(dispositivoApagado);
+		cliente.getDispositivos().add(dispositivoApagado1);
+		cliente.getDispositivos().add(dispositivoApagado2);
 		
 		// Act
 		long obtenido = cliente.cantidadDispositivosApagados();
@@ -114,4 +105,19 @@ public class ClienteTest {
 		assertEquals(esperado, obtenido);
 	}
 
+	@Test
+	public void consumo_Devuelve160_CuandoSeLePasan3DispositivosCon160kwhEnTotal() {
+		// Arrange
+		long esperado = 160;		
+
+		cliente.getDispositivos().add(dispositivoEncendido);
+		cliente.getDispositivos().add(dispositivoApagado1);
+		cliente.getDispositivos().add(dispositivoApagado2);
+		
+		// Act
+		long obtenido = (long) cliente.consumo();
+		
+		// Assert
+		assertEquals(esperado, obtenido);
+	}
 }

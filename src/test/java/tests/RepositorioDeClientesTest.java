@@ -27,8 +27,11 @@ public class RepositorioDeClientesTest {
 		
 		clientes = new ArrayList<Cliente>();
 		
-		cliente1 = new Cliente();
-		cliente2 = new Cliente();
+		cliente1 = new Cliente(null, null, null, null, null, null, null, null);
+		cliente2 = new Cliente(null, null, null, null, null, null, null, null);
+		//cliente1 = new Cliente(null, null, null, null, null, null, null, null, null);
+		//cliente2 = new Cliente(null, null, null, null, null, null, null, null, null);
+		
 	}
 	
 	@After

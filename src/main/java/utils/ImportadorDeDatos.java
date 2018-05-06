@@ -34,17 +34,15 @@ public class ImportadorDeDatos {
 	 * @return El cliente parseado.
 	 */
 	public Cliente deserializarCliente(JsonObject cliente) {
-		Cliente nuevoCliente = new Cliente();
-		nuevoCliente.setNombre(cliente.get("nombre").getAsString());
-		nuevoCliente.setApellido(cliente.get("apellido").getAsString());
-		nuevoCliente.setTipoDocumento(cliente.get("tipoDocumento").getAsString());
-		nuevoCliente.setNumeroDocumento(cliente.get("numeroDocumento").getAsString());
-		nuevoCliente.setTelefono(cliente.get("telefono").getAsString());
-		nuevoCliente.setDomicilio(cliente.get("domicilio").getAsString());
-		// Seteamos la fecha.
-		nuevoCliente.setFechaAlta(this.deserializarFechaAlta(cliente.get("fechaAlta").getAsString()));
-		// Seteamos la nueva categoría.
-		nuevoCliente.setCategoria(Categoria.valueOf(cliente.get("categoria").getAsString()));
+		Cliente nuevoCliente = new Cliente(cliente.get("nombre").getAsString(),
+				   cliente.get("apellido").getAsString(),
+				   cliente.get("tipoDocumento").getAsString(),
+				   cliente.get("numeroDocumento").getAsString(),
+				   cliente.get("telefono").getAsString(),
+				   cliente.get("domicilio").getAsString(),
+				   this.deserializarFechaAlta(cliente.get("fechaAlta").getAsString()),
+   				   Categoria.valueOf(cliente.get("categoria").getAsString())
+   				   );
 
 		return nuevoCliente;
 	}

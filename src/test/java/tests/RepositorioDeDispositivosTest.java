@@ -26,8 +26,8 @@ public class RepositorioDeDispositivosTest {
 		
 		dispositivos = new ArrayList<Dispositivo>();
 		
-		dispositivo1 = new Dispositivo();
-		dispositivo2 = new Dispositivo();
+		dispositivo1 = new Dispositivo(null, 0, true);
+		dispositivo2 = new Dispositivo(null, 0, true);
 
 	}
 	
